@@ -6,7 +6,7 @@ class mirrmaid {
 	ensure	=> installed,
     }
 
-    file { "/etc/mirrmaid.conf":
+    file { "/etc/mirrmaid/mirrmaid.conf":
         group	=> "root",
         mode    => 640,
         owner   => "root",
