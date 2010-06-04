@@ -2,11 +2,6 @@
 
 class mirrmaid {
 
-    # TODO: remove this obsoleted package, say after 6/30/2010
-    package { "doubledog-mirror-manager":
-	ensure	=> absent,
-    }
-
     package { "mirrmaid":
 	ensure	=> installed,
     }
