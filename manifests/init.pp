@@ -7,7 +7,7 @@ class mirrmaid {
     }
 
     file { "/etc/mirrmaid/mirrmaid.conf":
-        group	=> "root",
+        group	=> "mirrmaid",
         mode    => 640,
         owner   => "root",
         require => Package["mirrmaid"],
