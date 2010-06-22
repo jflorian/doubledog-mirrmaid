@@ -8,7 +8,7 @@ class mirrmaid {
 
     file { "/etc/mirrmaid/mirrmaid.conf":
         group	=> "mirrmaid",
-        mode    => 640,
+        mode    => "0640",
         owner   => "root",
         require => Package["mirrmaid"],
         source  => "puppet:///modules/mirrmaid/mirrmaid.conf",
