@@ -11,7 +11,7 @@ class mirrmaid {
         # that will lead to a situation where everything looks perfect, yet
         # mirrmaid will be denied write access to its targets.
         require => [
-            Exec["ldap-client-configuration"],
+            Exec["authconfig"],
             Service["autofs"],
         ],
     }
