@@ -24,5 +24,15 @@ class mirrmaid {
         source  => "puppet:///modules/mirrmaid/mirrmaid.conf",
     }
 
+    file { "/etc/cron.d/mirrmaid":
+        group   => "root",
+        mode    => "0644",
+        owner   => "root",
+        require => [
+            File["/etc/mirrmaid/mirrmaid.conf"],
+            Package["mirrmaid"],
+        ],
+        source  => "puppet:///private-host/mirrmaid/mirrmaid.cron",
+    }
 
 }
