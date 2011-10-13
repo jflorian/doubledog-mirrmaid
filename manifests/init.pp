@@ -26,7 +26,7 @@ class mirrmaid {
         source  => 'puppet:///modules/mirrmaid/mirrmaid.conf',
     }
 
-    cron:jobfile { 'mirrmaid':
+    cron::jobfile { 'mirrmaid':
         require => [
             File['/etc/mirrmaid/mirrmaid.conf'],
             Package['mirrmaid'],
