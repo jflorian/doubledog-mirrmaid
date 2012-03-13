@@ -30,7 +30,11 @@ class mirrmaid {
         mode    => '0640',
         owner   => 'root',
         require => Package['mirrmaid'],
-        source  => 'puppet:///modules/mirrmaid/mirrmaid.conf',
+        source  => [
+            'puppet:///private-host/mirrmaid/mirrmaid.conf',
+            'puppet:///private-domain/mirrmaid/mirrmaid.conf',
+            'puppet:///modules/mirrmaid/mirrmaid.conf',
+        ],
     }
 
     cron::jobfile { 'mirrmaid':
