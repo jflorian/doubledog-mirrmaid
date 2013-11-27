@@ -2,7 +2,7 @@
 
 class mirrmaid {
 
-    include cron::daemon
+    include 'cron::daemon'
 
     package { 'mirrmaid':
 	ensure	=> installed,
