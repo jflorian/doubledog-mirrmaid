@@ -1,23 +1,39 @@
 # modules/mirrmaid/manifests/init.pp
+#
+# == Class: mirrmaid
+#
+# Configures a host for running mirrmaid.
+#
+# === Parameters
+#
+# [*config_uri*]
+#   URI of the mirrmaid configuration source.
+#
+# [*cron_uri*]
+#   URI of the cron job configuration source.
+#
+# === Authors
+#
+#   John Florian <jflorian@doubledog.org>
 
-class mirrmaid {
+
+class mirrmaid ($config_uri, $cron_uri) {
 
     include 'cron::daemon'
 
     package { 'mirrmaid':
-	ensure	=> installed,
+        ensure	=> installed,
     }
 
     file { '/etc/mirrmaid/mirrmaid.conf':
+        owner   => 'root',
         group	=> 'mirrmaid',
         mode    => '0640',
-        owner   => 'root',
+        seluser => 'system_u',
+        selrole => 'object_r',
+        seltype => 'etc_t',
         require => Package['mirrmaid'],
-        source  => [
-            'puppet:///private-host/mirrmaid/mirrmaid.conf',
-            'puppet:///private-domain/mirrmaid/mirrmaid.conf',
-            'puppet:///modules/mirrmaid/mirrmaid.conf',
-        ],
+        source  => "${config_uri}",
     }
 
     cron::jobfile { 'mirrmaid':
@@ -25,7 +41,7 @@ class mirrmaid {
             File['/etc/mirrmaid/mirrmaid.conf'],
             Package['mirrmaid'],
         ],
-        source  => 'puppet:///private-host/mirrmaid/mirrmaid.cron',
+        source  => "${cron_uri}",
     }
 
 }
