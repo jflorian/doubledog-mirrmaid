@@ -2,46 +2,34 @@
 #
 # == Class: mirrmaid
 #
-# Configures a host for running mirrmaid.
+# Configures a host for mirrmaid service.
 #
 # === Parameters
 #
-# [*config_uri*]
-#   URI of the mirrmaid configuration source.
+# [*ensure*]
+#   Instance is to be 'installed' (default), 'latest' or 'absent'.
 #
-# [*cron_uri*]
-#   URI of the cron job configuration source.
+# === Notes
+#
+#   You will need to configure mirrmaid with one or more configuration files
+#   via the mirrmaid::config definition.
 #
 # === Authors
 #
-#   John Florian <jflorian@doubledog.org>
+#   John Florian <john.florian@dart.biz>
+#   John Florian <john.florian@dart.biz>
 
 
-class mirrmaid ($config_uri, $cron_uri) {
 
-    include 'cron::daemon'
 
-    package { 'mirrmaid':
-        ensure	=> installed,
-    }
+class mirrmaid (
+        $ensure='installed',
+    ) {
 
-    file { '/etc/mirrmaid/mirrmaid.conf':
-        owner   => 'root',
-        group	=> 'mirrmaid',
-        mode    => '0640',
-        seluser => 'system_u',
-        selrole => 'object_r',
-        seltype => 'etc_t',
-        require => Package['mirrmaid'],
-        source  => "${config_uri}",
-    }
+    include 'mirrmaid::params'
 
-    cron::jobfile { 'mirrmaid':
-        require => [
-            File['/etc/mirrmaid/mirrmaid.conf'],
-            Package['mirrmaid'],
-        ],
-        source  => "${cron_uri}",
+    package { $mirrmaid::params::packages:
+        ensure  => $ensure,
     }
 
 }
