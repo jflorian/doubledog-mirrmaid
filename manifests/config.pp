@@ -28,8 +28,8 @@
 
 
 define mirrmaid::config (
-        $ensure='present',
         $source,
+        $ensure='present',
         $cronjob=undef,
     ) {
 
@@ -37,22 +37,23 @@ define mirrmaid::config (
     include 'mirrmaid::params'
 
     file { "/etc/mirrmaid/${name}.conf":
-        ensure      => $ensure,
-        owner       => 'root',
-        group       => 'mirrmaid',
-        mode        => '0640',
-        seluser     => 'system_u',
-        selrole     => 'object_r',
-        seltype     => 'etc_t',
-        subscribe   => Package[$mirrmaid::params::packages],
-        source      => "${source}",
+        ensure    => $ensure,
+        owner     => 'root',
+        group     => 'mirrmaid',
+        mode      => '0640',
+        seluser   => 'system_u',
+        selrole   => 'object_r',
+        seltype   => 'etc_t',
+        subscribe => Package[$mirrmaid::params::packages],
+        source    => $source,
     }
 
     if $cronjob != undef {
 
-        cron::jobfile { "${name}":
+        cron::jobfile { $name:
+            ensure  => $ensure,
             require => Class['mirrmaid'],
-            source  => "${cronjob}",
+            source  => $cronjob,
         }
 
     }
