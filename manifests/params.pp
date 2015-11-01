@@ -13,7 +13,8 @@
 class mirrmaid::params {
 
     case $::operatingsystem {
-        Fedora: {
+
+        'Fedora': {
 
             $packages = [
                 'mirrmaid',
@@ -22,7 +23,7 @@ class mirrmaid::params {
         }
 
         default: {
-            fail ("The mirrmaid module is not yet supported on ${::operatingsystem}.")
+            fail ("${title}: operating system '${::operatingsystem}' is not supported")
         }
 
     }
