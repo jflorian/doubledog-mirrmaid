@@ -33,6 +33,7 @@ define mirrmaid::config (
         $cronjob=undef,
     ) {
 
+    require 'mirrmaid'
     include 'mirrmaid::params'
 
     file { "/etc/mirrmaid/${name}.conf":
