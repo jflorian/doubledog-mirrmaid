@@ -6,8 +6,11 @@
 #
 # === Authors
 #
-#   John Florian <john.florian@dart.biz>
 #   John Florian <jflorian@doubledog.org>
+#
+# === Copyright
+#
+# Copyright 2014-2015 John Florian
 
 
 class mirrmaid::params {
@@ -16,9 +19,7 @@ class mirrmaid::params {
 
         'Fedora': {
 
-            $packages = [
-                'mirrmaid',
-            ]
+            $packages = 'mirrmaid'
 
         }
 

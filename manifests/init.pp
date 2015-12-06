@@ -2,9 +2,13 @@
 #
 # == Class: mirrmaid
 #
-# Configures a host for mirrmaid service.
+# Manages the mirrmaid service.
 #
 # === Parameters
+#
+# ==== Required
+#
+# ==== Optional
 #
 # [*ensure*]
 #   Instance is to be 'installed' (default), 'latest' or 'absent'.
@@ -12,24 +16,24 @@
 # === Notes
 #
 #   You will need to configure mirrmaid with one or more configuration files
-#   via the mirrmaid::config definition.
+#   via the ::mirrmaid::config definition.
 #
 # === Authors
 #
-#   John Florian <john.florian@dart.biz>
-#   John Florian <john.florian@dart.biz>
-
-
+#
+#   John Florian <jflorian@doubledog.org>
+#
+# === Copyright
+#
+# Copyright 2010-2015 John Florian
 
 
 class mirrmaid (
         $ensure='installed',
-    ) {
+    ) inherits ::mirrmaid::params {
 
-    include 'mirrmaid::params'
-
-    package { $mirrmaid::params::packages:
-        ensure  => $ensure,
+    package { $::mirrmaid::params::packages:
+        ensure => $ensure,
     }
 
 }
