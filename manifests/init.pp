@@ -25,7 +25,7 @@
 #
 # === Copyright
 #
-# Copyright 2010-2015 John Florian
+# Copyright 2010-2016 John Florian
 
 
 class mirrmaid (
