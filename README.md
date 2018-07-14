@@ -42,6 +42,8 @@ This module lets you manage mirrmaid, the mirror manager.
 
 **Defined types:**
 
+* [mirrmaid::config](#mirrmaidconfig-defined-type)
+
 
 ### Classes
 
@@ -57,6 +59,25 @@ An array of package names needed for the mirrmaid installation.  The default sho
 
 
 ### Defined types
+
+#### mirrmaid::config defined type
+
+This defined type manages a mirrmaid configuration file.
+
+##### `namevar` (REQUIRED)
+An arbitrary identifier for the file instance unless the *confname* parameter is not set in which case this must provide the value normally set with the *confname* parameter.
+
+##### `confname`
+Name to be given to the configuration file, without path details nor suffix.  This may be used in place of *namevar* if it's beneficial to give namevar an arbitrary value.
+
+##### `content`, `source`
+Literal string or Puppet source URI for the configuration file content.  One and only one of *content* or *source* must be given.
+
+##### `cronjob`
+Puppet source URI of the cron job file to be installed.  Use the default (undef) if you do not want a cron job file installed.  See the `cron::jobfile` defined type for more details regarding format, requirements, etc.
+
+##### `ensure`
+Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean value may also be used with `true` equivalent to `present` and `false` equivalent to `absent`.
 
 
 ## Limitations
