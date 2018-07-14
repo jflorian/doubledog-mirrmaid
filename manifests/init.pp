@@ -1,4 +1,3 @@
-# modules/mirrmaid/manifests/init.pp
 #
 # == Class: mirrmaid
 #
@@ -25,7 +24,9 @@
 #
 # === Copyright
 #
-# Copyright 2010-2016 John Florian
+# This file is part of the doubledog-mirrmaid Puppet module.
+# Copyright 2010-2018 John Florian
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
 class mirrmaid (

@@ -1,4 +1,3 @@
-# modules/mirrmaid/manifests/params.pp
 #
 # == Class: mirrmaid::params
 #
@@ -10,7 +9,9 @@
 #
 # === Copyright
 #
-# Copyright 2014-2016 John Florian
+# This file is part of the doubledog-mirrmaid Puppet module.
+# Copyright 2014-2018 John Florian
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
 class mirrmaid::params {
