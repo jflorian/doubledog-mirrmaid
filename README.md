@@ -73,9 +73,6 @@ Name to be given to the configuration file, without path details nor suffix.  Th
 ##### `content`, `source`
 Literal string or Puppet source URI for the configuration file content.  One and only one of *content* or *source* must be given.
 
-##### `cronjob`
-Puppet source URI of the cron job file to be installed.  Use the default (undef) if you do not want a cron job file installed.  See the `cron::jobfile` defined type for more details regarding format, requirements, etc.
-
 ##### `ensure`
 Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean value may also be used with `true` equivalent to `present` and `false` equivalent to `absent`.
 

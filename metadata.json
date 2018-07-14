@@ -12,8 +12,5 @@
         "operatingsystem": "Fedora",
         "operatingsystemrelease": ["26", "27", "28"]
     }],
-    "dependencies": [{
-        "name": "doubledog/cron",
-        "version_requirement": ">= 1.0.0 < 2.0.0"
-    }]
+    "dependencies": []
 }

@@ -17,7 +17,6 @@
 define mirrmaid::config (
         $ensure='present',
         $confname=$title,
-        $cronjob=undef,
         $content=undef,
         $source=undef,
     ) {
@@ -35,16 +34,6 @@ define mirrmaid::config (
         subscribe => Package[$::mirrmaid::packages],
         content   => $content,
         source    => $source,
-    }
-
-    if $cronjob != undef {
-
-        cron::jobfile { $name:
-            ensure  => $ensure,
-            require => Class['mirrmaid'],
-            source  => $cronjob,
-        }
-
     }
 
 }
