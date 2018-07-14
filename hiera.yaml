@@ -1,0 +1,13 @@
+# This file is part of the doubledog-mirrmaid Puppet module.
+# Copyright 2018 John Florian
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+---
+version: 4
+datadir: data
+hierarchy:
+    - name: "Operating System"
+      backend: yaml
+      path: "os/%{facts.os.name}"
+    - name: "common"
+      backend: yaml

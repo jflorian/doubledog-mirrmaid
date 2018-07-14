@@ -38,10 +38,22 @@ This module lets you manage mirrmaid, the mirror manager.
 
 **Classes:**
 
+* [mirrmaid](#mirrmaid-class)
+
 **Defined types:**
 
 
 ### Classes
+
+#### mirrmaid class
+
+This class manages the mirrmaid package.  It is generally unnecessary to include this directly as it is included as needed by other resources in this module.
+
+##### `ensure`
+The state required of the package.  The default is `'installed'`.
+
+##### `packages`
+An array of package names needed for the mirrmaid installation.  The default should be correct for supported platforms.
 
 
 ### Defined types

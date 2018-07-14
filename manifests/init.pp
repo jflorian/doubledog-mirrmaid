@@ -1,24 +1,9 @@
 #
 # == Class: mirrmaid
 #
-# Manages the mirrmaid service.
-#
-# === Parameters
-#
-# ==== Required
-#
-# ==== Optional
-#
-# [*ensure*]
-#   Instance is to be 'installed' (default), 'latest' or 'absent'.
-#
-# === Notes
-#
-#   You will need to configure mirrmaid with one or more configuration files
-#   via the ::mirrmaid::config definition.
+# Manages mirrmaid on a host.
 #
 # === Authors
-#
 #
 #   John Florian <jflorian@doubledog.org>
 #
@@ -30,10 +15,11 @@
 
 
 class mirrmaid (
-        $ensure='installed',
-    ) inherits ::mirrmaid::params {
+        Array[String[1], 1] $packages,
+        String[1]           $ensure,
+    ) {
 
-    package { $::mirrmaid::params::packages:
+    package { $packages:
         ensure => $ensure,
     }
 

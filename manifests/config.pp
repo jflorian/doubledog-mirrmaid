@@ -58,8 +58,7 @@ define mirrmaid::config (
         $source=undef,
     ) {
 
-    require '::mirrmaid'
-    include '::mirrmaid::params'
+    include '::mirrmaid'
 
     file { "/etc/mirrmaid/${confname}.conf":
         ensure    => $ensure,
@@ -69,7 +68,7 @@ define mirrmaid::config (
         seluser   => 'system_u',
         selrole   => 'object_r',
         seltype   => 'etc_t',
-        subscribe => Package[$::mirrmaid::params::packages],
+        subscribe => Package[$::mirrmaid::packages],
         content   => $content,
         source    => $source,
     }
