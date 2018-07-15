@@ -44,6 +44,7 @@ This module lets you manage mirrmaid, the mirror manager.
 
 * [mirrmaid::config](#mirrmaidconfig-defined-type)
 * [mirrmaid::mirror](#mirrmaidmirror-defined-type)
+* [mirrmaid::mirror::branch](#mirrmaidmirrorbranch-defined-type)
 
 
 ### Classes
@@ -109,6 +110,28 @@ An array of email addresses to whom the operations summaries should be sent.  Th
 ##### `summary_size`
 If the size (in bytes) of the operations summary has exceeded this size threshold, the email will be sent early without necessarily waiting for the *summary_interval* to have elapsed.  This can be useful to alert the *summary_recipients* of major trouble in a more expedient way.  Set this to zero to defeat this feature.  The default is that from the package.
 
+
+#### mirrmaid::mirror::branch defined type
+
+This defined type manages a branch within a mirrmaid mirror configuration file.
+
+##### `namevar` (REQUIRED)
+An arbitrary and unique identifier for the branch within the mirror instance.
+
+##### `mirror` (REQUIRED)
+The unique identifier for the mirror instance to which this branch is associated.
+
+##### `source` (REQUIRED)
+A string providing the rsync URI to be mirrored.
+
+##### `target` (REQUIRED)
+A string providing the local file system path to where the mirror is to be rooted.
+
+##### `exclude`
+An array of strings to be passed to rsync as exclusions.  The default is an empty array, i.e., nothing will be excluded.  See the section `FILTER RULES` in the rsync man page for more details.
+
+##### `include`
+An array of strings to be passed to rsync as inclusions.  Because mirrmaid passes the *exclude* items to rsync first, followed by the *include* items, these are effectively a means for overriding general *exclude* items.  For example, you might set `exclude = ['*.iso']` and `include = ['*KDE*.iso']` to filter out all but the KDE images.  The default is an empty array.  See the section `FILTER RULES` in the rsync man page for more details.
 
 
 ## Limitations

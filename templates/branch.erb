@@ -1,0 +1,17 @@
+<%#
+This file is part of the doubledog-mirrmaid Puppet module.
+Copyright 2018 John Florian
+SPDX-License-Identifier: GPL-3.0-or-later
+-%>
+
+
+[<%= @name %>]
+
+source: <%= @source %>
+target: <%= @target %>
+include: [
+<%= @exclude.map { |e| "    '#{e}'" }.join(",\n") %>
+    ]
+exclude: [
+<%= @exclude.map { |e| "    '#{e}'" }.join(",\n") %>
+    ]
