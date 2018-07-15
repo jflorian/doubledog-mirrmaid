@@ -15,8 +15,9 @@
 
 
 class mirrmaid (
-        Array[String[1], 1] $packages,
-        String[1]           $ensure,
+        Array[String[1], 1]         $packages,
+        String[1]                   $ensure,
+        Optional[Array[String[1]]]  $rsync_options,
     ) {
 
     package { $packages:

@@ -43,19 +43,23 @@ This module lets you manage mirrmaid, the mirror manager.
 **Defined types:**
 
 * [mirrmaid::config](#mirrmaidconfig-defined-type)
+* [mirrmaid::mirror](#mirrmaidmirror-defined-type)
 
 
 ### Classes
 
 #### mirrmaid class
 
-This class manages the mirrmaid package.  It is generally unnecessary to include this directly as it is included as needed by other resources in this module.
+This class manages the mirrmaid package and sets overall module defaults.  It must be included once.
 
 ##### `ensure`
 The state required of the package.  The default is `'installed'`.
 
 ##### `packages`
 An array of package names needed for the mirrmaid installation.  The default should be correct for supported platforms.
+
+##### `rsync_options`
+An array of general options to be passed to rsync.  Note that **ORDER CAN BE IMPORTANT**, as some options may override some or all of others.  This sets the default that will be used for each [mirrmaid::mirror](#mirrmaidmirror-defined-type) and his module itself provides a default suitable for most use cases.
 
 
 ### Defined types
@@ -75,6 +79,36 @@ Literal string or Puppet source URI for the configuration file content.  One and
 
 ##### `ensure`
 Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean value may also be used with `true` equivalent to `present` and `false` equivalent to `absent`.
+
+
+#### mirrmaid::mirror defined type
+
+This defined type manages a mirrmaid mirror configuration file.
+
+##### `namevar` (REQUIRED)
+An arbitrary and unique identifier for the mirror instance.
+
+##### `confname`
+Name to be given to the configuration file, without path details nor suffix.  The default (recommended) is the value of *namevar*.
+
+##### `ensure`
+Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean value may also be used with `true` equivalent to `present` and `false` equivalent to `absent`.
+
+##### `rsync_options`
+An array of general options to be passed to rsync.  Note that **ORDER CAN BE IMPORTANT**, as some options may override some or all of others.
+
+##### `summary_history_count`
+Keep this many historical copies of operational summaries on disk before they are rotated out of existence.  A minimum value of one is silently enforced.  The default is that from the package.
+
+##### `summary_interval`
+The minimum number of seconds that mirrmaid will wait after sending an operations summary via email before sending another.  A minimum value of ten minutes is silently enforced.  The default is that from the package.
+
+##### `summary_recipients`
+An array of email addresses to whom the operations summaries should be sent.  The default is that from the package.
+
+##### `summary_size`
+If the size (in bytes) of the operations summary has exceeded this size threshold, the email will be sent early without necessarily waiting for the *summary_interval* to have elapsed.  This can be useful to alert the *summary_recipients* of major trouble in a more expedient way.  Set this to zero to defeat this feature.  The default is that from the package.
+
 
 
 ## Limitations

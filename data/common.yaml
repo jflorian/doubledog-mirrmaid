@@ -6,3 +6,23 @@
 mirrmaid::ensure:       installed
 mirrmaid::packages:
     - mirrmaid
+mirrmaid::rsync_options:
+    - -hh  # human-readable level 2: numbers w/ commas & units of magnitude
+    - --archive
+    - --compress
+    - --contimeout=300
+    - --delay-updates
+    - --delete-delay
+    - --delete-excluded
+    - --fuzzy
+    - --hard-links
+    - --no-motd
+    - --partial-dir=.rsync-partial
+    - --stats
+    - --timeout=300
+    - --verbose
+    # These MUST be kept after the above!
+    - --no-group
+    - --no-owner
+    # This can be useful to preview changes affecting established mirrors.
+    #- --dry-run
