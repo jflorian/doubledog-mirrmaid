@@ -89,6 +89,10 @@ This defined type manages a mirrmaid mirror configuration file.
 ##### `namevar` (REQUIRED)
 An arbitrary and unique identifier for the mirror instance.
 
+##### `branches` (REQUIRED)
+A hash whose keys are branch names and whose values are hashes comprising the
+same parameters you would otherwise pass to [mirrmaid::mirror::branch](#mirrmaidmirrorbranch-defined-type).  It's unnecessary for the hash to specify the *mirror* parameter since this defined type passes that along by default.
+
 ##### `confname`
 Name to be given to the configuration file, without path details nor suffix.  The default (recommended) is the value of *namevar*.
 
@@ -113,7 +117,7 @@ If the size (in bytes) of the operations summary has exceeded this size threshol
 
 #### mirrmaid::mirror::branch defined type
 
-This defined type manages a branch within a mirrmaid mirror configuration file.
+This defined type manages a branch within a mirrmaid mirror configuration file.  You generally needn't reference this defined type directly but rather indirectly via [mirrmaid::mirror](#mirrmaidmirror-defined-type).
 
 ##### `namevar` (REQUIRED)
 An arbitrary and unique identifier for the branch within the mirror instance.

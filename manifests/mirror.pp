@@ -15,6 +15,7 @@
 
 
 define mirrmaid::mirror (
+        Hash[String[1], Hash]           $branches,
         Ddolib::File::Ensure            $ensure='present',
         String[1]                       $confname=$title,
         Optional[Array[String[1]]]      $rsync_options=$::mirrmaid::rsync_options,
@@ -44,5 +45,11 @@ define mirrmaid::mirror (
         content => template('mirrmaid/mirror.erb'),
         order   => 0,
     }
+
+    create_resources(
+            ::mirrmaid::mirror::branch,
+            $branches,
+            {'mirror' => $name}
+    )
 
 }
