@@ -53,6 +53,10 @@ This module lets you manage mirrmaid, the mirror manager.
 
 This class manages the mirrmaid package and sets overall module defaults.  It must be included once.
 
+##### `mirrors` (REQUIRED)
+A hash whose keys are mirror names and whose values are hashes comprising the
+same parameters you would otherwise pass to [mirrmaid::mirror](#mirrmaidmirror-defined-type).
+
 ##### `ensure`
 The state required of the package.  The default is `'installed'`.
 
@@ -84,7 +88,7 @@ Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean val
 
 #### mirrmaid::mirror defined type
 
-This defined type manages a mirrmaid mirror configuration file.
+This defined type manages a mirrmaid mirror configuration file.  You generally needn't reference this defined type directly but rather indirectly via  the *mirrors* parameter on the [mirrmaid](#mirrmaid-class) class.
 
 ##### `namevar` (REQUIRED)
 An arbitrary and unique identifier for the mirror instance.

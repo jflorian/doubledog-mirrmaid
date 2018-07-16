@@ -17,11 +17,14 @@
 class mirrmaid (
         Array[String[1], 1]         $packages,
         String[1]                   $ensure,
+        Hash[String[1], Hash]       $mirrors,
         Optional[Array[String[1]]]  $rsync_options,
     ) {
 
     package { $packages:
         ensure => $ensure,
     }
+
+    create_resources(::mirrmaid::mirror, $mirrors)
 
 }
