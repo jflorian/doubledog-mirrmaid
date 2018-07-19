@@ -45,6 +45,7 @@ This module lets you manage mirrmaid, the mirror manager.
 * [mirrmaid::config](#mirrmaidconfig-defined-type)
 * [mirrmaid::mirror](#mirrmaidmirror-defined-type)
 * [mirrmaid::mirror::branch](#mirrmaidmirrorbranch-defined-type)
+* [mirrmaid::mirror::default](#mirrmaidmirrordefault-defined-type)
 
 
 ### Classes
@@ -140,6 +141,24 @@ An array of strings to be passed to rsync as exclusions.  The default is an empt
 
 ##### `include`
 An array of strings to be passed to rsync as inclusions.  Because mirrmaid passes the *exclude* items to rsync first, followed by the *include* items, these are effectively a means for overriding general *exclude* items.  For example, you might set `exclude = ['*.iso']` and `include = ['*KDE*.iso']` to filter out all but the KDE images.  The default is an empty array.  See the section `FILTER RULES` in the rsync man page for more details.
+
+
+#### mirrmaid::mirror::default defined type
+
+This defined type manages a default within a mirrmaid mirror configuration file.  Such entries appear within the special `[DEFAULT]` section.  These values can then be referenced from any other configuration item via the special `%(name)s` syntax.   The primary value of doing so is to avoid repetition in the configuration file.
+
+For example, you may have a standard set of exclusions you wish to impose on every branch in a mirror.  While you could avoid the repetition in your Puppet manifest or Hiera data through references to a common shared value, the resultant mirrmaid configuration file would still have this repetition.  That's not necessarily bad, but this approach avoids repetition from start to finish and can make reviewing the configuration files easier.  You might even find the Puppet/Hiera resources easier to visualize in this way, too.
+
+You generally needn't reference this defined type directly but rather indirectly via [mirrmaid::mirror](#mirrmaidmirror-defined-type) via the *defaults* parameter.
+
+##### `namevar` (REQUIRED)
+An arbitrary and unique identifier for the default within the mirror instance.
+
+##### `mirror` (REQUIRED)
+The unique identifier for the mirror instance to which this default is associated.
+
+##### `value` (REQUIRED)
+The [mirrmaid::value](#mirrmaidvalue-data-type) that the default is to take.
 
 
 ## Limitations

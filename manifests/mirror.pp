@@ -15,14 +15,15 @@
 
 
 define mirrmaid::mirror (
-        Hash[String[1], Hash]           $branches,
-        Ddolib::File::Ensure            $ensure='present',
-        String[1]                       $confname=$title,
-        Optional[Array[String[1]]]      $rsync_options=$::mirrmaid::rsync_options,
-        Optional[Integer[0]]            $summary_history_count=undef,
-        Optional[Integer[600]]          $summary_interval=undef,
-        Optional[Array[String[1],1]]    $summary_recipients=undef,
-        Optional[Integer[0]]            $summary_size=undef,
+        Hash[String[1], Hash]               $branches,
+        Hash[String[1], Mirrmaid::Default]  $defaults={},
+        Ddolib::File::Ensure                $ensure='present',
+        String[1]                           $confname=$title,
+        Optional[Array[String[1]]]          $rsync_options=$::mirrmaid::rsync_options,
+        Optional[Integer[0]]                $summary_history_count=undef,
+        Optional[Integer[600]]              $summary_interval=undef,
+        Optional[Array[String[1],1]]        $summary_recipients=undef,
+        Optional[Integer[0]]                $summary_size=undef,
     ) {
 
     include '::mirrmaid'
@@ -45,6 +46,17 @@ define mirrmaid::mirror (
         content => template('mirrmaid/mirror.erb'),
         order   => 0,
     }
+
+    ::mirrmaid::mirror::default { 'rsync_options':
+        mirror => $name,
+        value  => $rsync_options,
+    }
+
+    create_resources(
+            ::mirrmaid::mirror::default,
+            $defaults,
+            {'mirror' => $name}
+    )
 
     create_resources(
             ::mirrmaid::mirror::branch,

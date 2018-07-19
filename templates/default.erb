@@ -1,0 +1,13 @@
+<%#
+This file is part of the doubledog-mirrmaid Puppet module.
+Copyright 2018 John Florian
+SPDX-License-Identifier: GPL-3.0-or-later
+-%>
+
+<% if @value.instance_of?(Array) -%>
+<%= @name %>: [
+<%= @value.map { |e| "    '#{e}'" }.join(",\n") %>
+    ]
+<% else -%>
+<%= @name %>: <%= @value %>
+<% end -%>

@@ -27,14 +27,11 @@ summary_size: <%= @summary_size %>
 <% end -%>
 
 
-[DEFAULT]
-
-rsync_options: [
-<%= @rsync_options.map { |e| "    '#{e}'" }.join(",\n") %>
-    ]
-
 [MIRRORS]
 
 enabled: [
 <%= @branches.keys.map { |e| "    '#{e}'" }.join(",\n") %>
     ]
+
+
+[DEFAULT]
