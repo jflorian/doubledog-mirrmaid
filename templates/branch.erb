@@ -9,9 +9,17 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 source: <%= @source %>
 target: <%= @target %>
+<% if @include.instance_of?(Array) -%>
 include: [
-<%= @exclude.map { |e| "    '#{e}'" }.join(",\n") %>
+<%= @include.map { |e| "    '#{e}'" }.join(",\n") %>
     ]
+<% else -%>
+include: <%= @include %>
+<% end -%>
+<% if @exclude.instance_of?(Array) -%>
 exclude: [
 <%= @exclude.map { |e| "    '#{e}'" }.join(",\n") %>
     ]
+<% else -%>
+exclude: <%= @exclude %>
+<% end -%>

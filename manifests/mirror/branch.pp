@@ -15,11 +15,11 @@
 
 
 define mirrmaid::mirror::branch (
-        String[1]                       $mirror,
-        String[1]                       $source,
-        String[1]                       $target,
-        Optional[Array[String[1]]]      $exclude=[],
-        Optional[Array[String[1]]]      $include=[],
+        String[1]                                   $mirror,
+        String[1]                                   $source,
+        String[1]                                   $target,
+        Optional[Variant[String,Array[String[1]]]]  $exclude=[],
+        Optional[Variant[String,Array[String[1]]]]  $include=[],
     ) {
 
     concat::fragment { "mirrmaid-mirror-${mirror}-branch-${name}":

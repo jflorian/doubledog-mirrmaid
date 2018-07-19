@@ -17,6 +17,7 @@
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
     * [Classes](#classes)
     * [Defined types](#defined-types)
+    * [Data types](#data-types)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
 
@@ -46,6 +47,10 @@ This module lets you manage mirrmaid, the mirror manager.
 * [mirrmaid::mirror](#mirrmaidmirror-defined-type)
 * [mirrmaid::mirror::branch](#mirrmaidmirrorbranch-defined-type)
 * [mirrmaid::mirror::default](#mirrmaidmirrordefault-defined-type)
+
+**Data types:**
+
+* [Mirrmaid::Defaults](#MirrmaidDefaults-data-type)
 
 
 ### Classes
@@ -100,6 +105,9 @@ same parameters you would otherwise pass to [mirrmaid::mirror::branch](#mirrmaid
 
 ##### `confname`
 Name to be given to the configuration file, without path details nor suffix.  The default (recommended) is the value of *namevar*.
+
+##### `defaults`
+A hash whose keys are default names and whose values are hashes comprising the same parameters you would otherwise pass to [mirrmaid::mirror::default](#mirrmaidmirrordefault-defined-type).  It's unnecessary for the hash to specify the *mirror* parameter since this defined type passes that along by default.
 
 ##### `ensure`
 Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean value may also be used with `true` equivalent to `present` and `false` equivalent to `absent`.
@@ -159,6 +167,13 @@ The unique identifier for the mirror instance to which this default is associate
 
 ##### `value` (REQUIRED)
 The [mirrmaid::value](#mirrmaidvalue-data-type) that the default is to take.
+
+
+### Data types
+
+#### Mirrmaid::Defaults data type
+
+This data type represents a hash whose keys are default names and whose values are hashes comprising the same parameters you would otherwise pass to [mirrmaid::mirror::default](#mirrmaidmirrordefault-defined-type).
 
 
 ## Limitations
