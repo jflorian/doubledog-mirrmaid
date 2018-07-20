@@ -50,6 +50,7 @@ This module lets you manage mirrmaid, the mirror manager.
 
 **Data types:**
 
+* [Mirrmaid::Branches](#MirrmaidBranches-data-type)
 * [Mirrmaid::Defaults](#MirrmaidDefaults-data-type)
 * [Mirrmaid::Value](#MirrmaidValue-data-type)
 
@@ -101,8 +102,7 @@ This defined type manages a mirrmaid mirror configuration file.  You generally n
 An arbitrary and unique identifier for the mirror instance.
 
 ##### `branches` (REQUIRED)
-A hash whose keys are branch names and whose values are hashes comprising the
-same parameters you would otherwise pass to [mirrmaid::mirror::branch](#mirrmaidmirrorbranch-defined-type).  It's unnecessary for the hash to specify the *mirror* parameter since this defined type passes that along by default.
+A hash whose keys are branch names and whose values are hashes comprising the same parameters you would otherwise pass to [mirrmaid::mirror::branch](#mirrmaidmirrorbranch-defined-type).  It's unnecessary for the hash to specify the *mirror* parameter since this defined type passes that along by default.
 
 ##### `confname`
 Name to be given to the configuration file, without path details nor suffix.  The default (recommended) is the value of *namevar*.
@@ -171,6 +171,11 @@ The [Mirrmaid::Value](#MirrmaidValue-data-type) that the default is to take.
 
 
 ### Data types
+
+#### Mirrmaid::Branches data type
+
+This data type represents a hash whose keys are branch names and whose values are hashes comprising the same parameters you would otherwise pass to [mirrmaid::mirror::branch](#mirrmaidmirrorbranch-defined-type).
+
 
 #### Mirrmaid::Defaults data type
 

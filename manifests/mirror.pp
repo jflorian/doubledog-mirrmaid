@@ -15,7 +15,7 @@
 
 
 define mirrmaid::mirror (
-        Hash[String[1], Hash]           $branches,
+        Mirrmaid::Branches              $branches,
         Ddolib::File::Ensure            $ensure='present',
         String[1]                       $confname=$title,
         Optional[Mirrmaid::Defaults]    $defaults={},
