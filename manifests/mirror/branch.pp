@@ -15,7 +15,7 @@
 
 
 define mirrmaid::mirror::branch (
-        String[1]                   $mirror,
+        Mirrmaid::Key               $mirror,
         String[1]                   $source,
         String[1]                   $target,
         Optional[Mirrmaid::Value]   $exclude=[],
