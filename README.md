@@ -145,13 +145,16 @@ For example, you may have a standard set of exclusions you wish to impose on eve
 You generally needn't reference this defined type directly but rather indirectly via [mirrmaid::mirror](#mirrmaidmirror-defined-type) via the *defaults* parameter.
 
 ##### `namevar` (REQUIRED)
-An arbitrary and unique identifier for the default within the mirror instance.
+An arbitrary and unique identifier for the default within the mirror instance.  See the *key* parameter for more details.
 
 ##### `mirror` (REQUIRED)
 The unique identifier for the mirror instance to which this default is associated.
 
 ##### `value` (REQUIRED)
 The [Mirrmaid::Value](#MirrmaidValue-data-type) that the default is to take.
+
+##### `key`
+The [Mirrmaid::Key](#MirrmaidKey-data-type) that uniquely identifies the default.  If unset, this will take the value of the *namevar* parameter.  This makes it possible to have the same *key* in multiple mirror configuration files by giving each an distinct *namevar* to satisfy Puppet's requirement for uniquely named resources.
 
 
 ### Data types

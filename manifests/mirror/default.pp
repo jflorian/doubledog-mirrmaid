@@ -16,6 +16,7 @@
 
 define mirrmaid::mirror::default (
         String[1]       $mirror,
+        Mirrmaid::Key   $key=$title,
         Mirrmaid::Value $value,
     ) {
 

@@ -5,9 +5,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
 -%>
 
 <% if @value.instance_of?(Array) -%>
-<%= @name %>: [
+<%= @key %>: [
 <%= @value.map { |e| "    '#{e}'" }.join(",\n") %>
     ]
 <% else -%>
-<%= @name %>: <%= @value %>
+<%= @key %>: <%= @value %>
 <% end -%>

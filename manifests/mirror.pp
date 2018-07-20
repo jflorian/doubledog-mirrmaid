@@ -47,8 +47,9 @@ define mirrmaid::mirror (
         order   => 0,
     }
 
-    ::mirrmaid::mirror::default { 'rsync_options':
+    ::mirrmaid::mirror::default { "rsync_options for mirror ${name}":
         mirror => $name,
+        key    => 'rsync_options',
         value  => $rsync_options,
     }
 
