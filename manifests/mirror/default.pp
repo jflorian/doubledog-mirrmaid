@@ -15,8 +15,8 @@
 
 
 define mirrmaid::mirror::default (
-        String[1]           $mirror,
-        Mirrmaid::Default   $value,
+        String[1]       $mirror,
+        Mirrmaid::Value $value,
     ) {
 
     concat::fragment { "mirrmaid-mirror-${mirror}-default-${name}":

@@ -51,6 +51,7 @@ This module lets you manage mirrmaid, the mirror manager.
 **Data types:**
 
 * [Mirrmaid::Defaults](#MirrmaidDefaults-data-type)
+* [Mirrmaid::Value](#MirrmaidValue-data-type)
 
 
 ### Classes
@@ -166,7 +167,7 @@ An arbitrary and unique identifier for the default within the mirror instance.
 The unique identifier for the mirror instance to which this default is associated.
 
 ##### `value` (REQUIRED)
-The [mirrmaid::value](#mirrmaidvalue-data-type) that the default is to take.
+The [Mirrmaid::Value](#MirrmaidValue-data-type) that the default is to take.
 
 
 ### Data types
@@ -174,6 +175,11 @@ The [mirrmaid::value](#mirrmaidvalue-data-type) that the default is to take.
 #### Mirrmaid::Defaults data type
 
 This data type represents a hash whose keys are default names and whose values are hashes comprising the same parameters you would otherwise pass to [mirrmaid::mirror::default](#mirrmaidmirrordefault-defined-type).
+
+
+#### Mirrmaid::Value data type
+
+In the most basic sense, a mirrmaid configuration file is composed of key/value pairs.  This data type represents the value half of any such pair.  Acceptable values are non-empty strings or non-empty arrays of such strings.
 
 
 ## Limitations

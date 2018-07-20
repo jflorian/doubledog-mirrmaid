@@ -1,5 +1,5 @@
 #
-# == Type: mirrmaid::default
+# == Type: Mirrmaid::Value
 #
 # === Authors
 #
@@ -12,7 +12,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
-type Mirrmaid::Default = Variant[
-    String,
-    Array[String],
+type Mirrmaid::Value = Variant[
+    String[1],
+    Array[String[1]],
 ]

@@ -17,7 +17,7 @@ type Mirrmaid::Defaults = Hash[
     Struct[
         {
             mirror => Optional[String[1]],
-            value  => Mirrmaid::Default,
+            value  => Mirrmaid::Value,
         }
     ],
 ]
