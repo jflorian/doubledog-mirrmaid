@@ -51,6 +51,7 @@ This module lets you manage mirrmaid, the mirror manager.
 
 * [Mirrmaid::Branches](#MirrmaidBranches-data-type)
 * [Mirrmaid::Defaults](#MirrmaidDefaults-data-type)
+* [Mirrmaid::Key](#MirrmaidKey-data-type)
 * [Mirrmaid::Value](#MirrmaidValue-data-type)
 
 
@@ -163,6 +164,11 @@ This data type represents a hash whose keys are branch names and whose values ar
 #### Mirrmaid::Defaults data type
 
 This data type represents a hash whose keys are default names and whose values are hashes comprising the same parameters you would otherwise pass to [mirrmaid::mirror::default](#mirrmaidmirrordefault-defined-type).
+
+
+#### Mirrmaid::Key data type
+
+In the most basic sense, a mirrmaid configuration file is composed of key/value pairs.  This data type represents the key half of any such pair.  Acceptable values are strings consisting of one or more characters and may consist of: alpha characters, numeric digits, underscores and spaces.
 
 
 #### Mirrmaid::Value data type

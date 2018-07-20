@@ -16,7 +16,11 @@ type Mirrmaid::Defaults = Hash[
     String[1],
     Struct[
         {
+            # Neither is actually optional, but this is required for
+            # create_resources to provide defaults missing from Hiera -- the
+            # standard use case.
             mirror => Optional[String[1]],
+            key    => Optional[Mirrmaid::Key],
             value  => Mirrmaid::Value,
         }
     ],
