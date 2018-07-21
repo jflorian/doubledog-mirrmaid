@@ -9,11 +9,7 @@
 #### Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with mirrmaid](#setup)
-    * [What mirrmaid affects](#what-mirrmaid-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with mirrmaid](#beginning-with-mirrmaid)
-1. [Usage - Configuration options and additional functionality](#usage)
+1. [Usage - a quick start guide](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
     * [Classes](#classes)
     * [Defined types](#defined-types)
@@ -25,15 +21,109 @@
 
 This module lets you manage mirrmaid, the mirror manager.
 
-## Setup
-
-### What mirrmaid Affects
-
-### Setup Requirements
-
-### Beginning with mirrmaid
-
 ## Usage
+
+This module is designed to be driven primarily from Hiera, though that's not necessary it is the easiest way.  Thus, from the Puppet side of things, you need only:
+
+```puppet
+include '::mirrmaid'
+```
+
+In addition, you'll also need one or more cron jobs (or similar) to actually execute mirrmaid per your requirements.  Everything else is best left to declarations in your Hiera data.  While there are many ways to do so, illustrated below is an approach that's both flexible and concise.  First, we start by defining a trivial structure of mirror sources so that we may easily change sources later should the need arise:
+
+```yaml
+sources:
+    kernel_org:
+        host:               rsync://mirrors.kernel.org
+        centos_prefix:      centos
+        epel_prefix:        fedora-epel
+        fedora_prefix:      fedora
+    princeton_edu:
+        host:               rsync://mirror.math.princeton.edu
+        centos_prefix:      pub/centos
+        epel_prefix:        pub/epel
+        fedora_prefix:      pub/fedora/linux
+    syringanetworks_net:
+        host:               rsync://mirrors.syringanetworks.net
+        centos_prefix:      centos
+        epel_prefix:        fedora-epel
+        fedora_prefix:      fedora/linux
+```
+
+The prefix entries are tied to each source so that anything deeper in their mirror trees has a consistent layout.  In essence, this is where they've chosen to warehouse their various mirrors.  This approach obviously requires that each source provide all the content you want.  You would likely be unhappy if, in changing to another source, large parts of your mirror trees are wiped out.
+
+With the sources defined, we can get on with the actual mirrmaid configuration.  A complete example is included and discussed in more detail afterwards.
+
+```yaml
+mirrmaid::mirrors:
+    centos:
+        branches:
+            all of centos:
+                source:     "%{hiera('sources.kernel_org.host')}/%{hiera('sources.kernel_org.centos_prefix')}"
+                target:     /pub/mirrors/centos
+                exclude:
+                    - '*.torrent'
+                    - '*sum.txt'
+                    - '.*'
+                    - 'dir_sizes'
+                    - 'filelist.gz'
+                include:
+                    - '.treeinfo'
+                    - '.treeinfo.signed'
+    epel:
+        branches:
+            all of epel except testing:
+                source:     "%{hiera('sources.kernel_org.host')}/%{hiera('sources.kernel_org.epel_prefix')}"
+                target:     /pub/mirrors/epel
+                exclude:
+                    - 'fullfilelist'
+                    - 'fullfiletimelist-epel'
+                    - 'testing/'
+    fedora:
+        branches:
+            release 28:
+                source:     '%(fedora_source)s/releases/28'
+                target:     '%(fedora_target)s/releases/28'
+                exclude:    '%(fedora_excludes)s'
+                include:    '%(fedora_includes)s'
+            updates for 28:
+                source:     '%(fedora_source)s/updates/28'
+                target:     '%(fedora_target)s/updates/28'
+                exclude:    '%(fedora_excludes)s'
+                include:    '%(fedora_includes)s'
+            release 27:
+                source:     '%(fedora_source)s/releases/27'
+                target:     '%(fedora_target)s/releases/27'
+                exclude:    '%(fedora_excludes)s'
+                include:    '%(fedora_includes)s'
+            updates for 27:
+                source:     '%(fedora_source)s/updates/27'
+                target:     '%(fedora_target)s/updates/27'
+                exclude:    '%(fedora_excludes)s'
+                include:    '%(fedora_includes)s'
+        defaults:
+            fedora_excludes:
+                value:
+                    - '.*'
+                    - 'SRPMS/'
+                    - 'debug/'
+                    - 'drpms/'
+                    - 'jigdo/'
+                    - 'source/'
+            fedora_includes:
+                value:
+                    - '.treeinfo'
+                    - '.treeinfo.signed'
+            fedora_source:
+                value: "%{hiera('sources.kernel_org.host')}/%{hiera('sources.kernel_org.fedora_prefix')}"
+            fedora_target:
+                value: /pub/mirrors/fedora
+```
+
+From this example, it can be seen that three mirrors have been defined, one each for CentOS, (Fedora) EPEL and Fedora.  Each mirror is composed of one or more branches detailing what exactly is to be mirrored, from where it comes and to where it goes.  The name of the mirror becomes the name of one mirrmaid configuration file.  The name of each branch becomes one mirror facet defined within that file.  By default, both mirrmaid itself and this module include all content and exclude nothing.  Specific exclusions may be used to reduce what is mirrored, e.g., hidden files while specific inclusions may be used to override those exclusions, e.g., a few select hidden files.
+
+This example contains two different types of interpolation references.  First, there are the Hiera lookups of which you should be familiar.  Second, are the Python-style permitted by mirrmaid which utilizes [Python's ConfigParser module](https://docs.python.org/3/library/configparser.html#interpolation-of-values).  Why both and not just Hiera alone?  This is explained in the [mirrmaid::mirror::default](#mirrmaidmirrordefault-defined-type) defined type documentation, but in short, it makes the resulting configuration file more compact.  It's also slightly less cumbersome than Hiera's own lookup syntax.
+
 
 ## Reference
 
