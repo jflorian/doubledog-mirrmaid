@@ -1,10 +1,12 @@
 {
     "name": "doubledog-mirrmaid",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "author": "John Florian",
-    "license": "GPL-3.0",
     "summary": "A module to manage the mirrmaid application",
+    "license": "GPL-3.0",
     "source": "https://www.doubledog.org/git/puppet-mirrmaid.git",
+    "project_page": "https://github.com/jflorian/doubledog-mirrmaid",
+    "issues_url": "https://github.com/jflorian/doubledog-mirrmaid/issues",
     "operatingsystem_support": [{
         "operatingsystem": "CentOS",
         "operatingsystemmajrelease": "7"
