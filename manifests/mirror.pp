@@ -17,7 +17,7 @@
 define mirrmaid::mirror (
         Mirrmaid::Branches              $branches,
         Ddolib::File::Ensure            $ensure='present',
-        String[1]                       $confname=$title,
+        String[1]                       $config_filename=$title,
         Optional[Mirrmaid::Defaults]    $defaults={},
         Optional[Array[String[1]]]      $rsync_options=$::mirrmaid::rsync_options,
         Optional[Integer[0]]            $summary_history_count=undef,
@@ -30,7 +30,7 @@ define mirrmaid::mirror (
 
     concat { "mirrmaid-mirror-${name}":
         ensure    => $ensure,
-        path      => "/etc/mirrmaid/${confname}.conf",
+        path      => "/etc/mirrmaid/${config_filename}.conf",
         owner     => 'root',
         group     => 'mirrmaid',
         mode      => '0640',
