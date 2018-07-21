@@ -139,10 +139,10 @@ This example contains two different types of interpolation references.  First, t
 
 **Data types:**
 
-* [Mirrmaid::Branches](#MirrmaidBranches-data-type)
-* [Mirrmaid::Defaults](#MirrmaidDefaults-data-type)
-* [Mirrmaid::Key](#MirrmaidKey-data-type)
-* [Mirrmaid::Value](#MirrmaidValue-data-type)
+* [Mirrmaid::Branches](#mirrmaidbranches-data-type)
+* [Mirrmaid::Defaults](#mirrmaiddefaults-data-type)
+* [Mirrmaid::Key](#mirrmaidkey-data-type)
+* [Mirrmaid::Value](#mirrmaidvalue-data-type)
 
 
 ### Classes
@@ -241,10 +241,10 @@ An arbitrary and unique identifier for the default within the mirror instance.  
 The unique identifier for the mirror instance to which this default is associated.
 
 ##### `value` (REQUIRED)
-The [Mirrmaid::Value](#MirrmaidValue-data-type) that the default is to take.
+The [Mirrmaid::Value](#mirrmaidvalue-data-type) that the default is to take.
 
 ##### `key`
-The [Mirrmaid::Key](#MirrmaidKey-data-type) that uniquely identifies the default.  If unset, this will take the value of the *namevar* parameter.  This makes it possible to have the same *key* in multiple mirror configuration files by giving each an distinct *namevar* to satisfy Puppet's requirement for uniquely named resources.
+The [Mirrmaid::Key](#mirrmaidkey-data-type) that uniquely identifies the default.  If unset, this will take the value of the *namevar* parameter.  This makes it possible to have the same *key* in multiple mirror configuration files by giving each an distinct *namevar* to satisfy Puppet's requirement for uniquely named resources.
 
 
 ### Data types
