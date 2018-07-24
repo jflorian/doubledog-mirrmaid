@@ -190,6 +190,9 @@ Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean val
 ##### `rsync_options`
 An array of general options to be passed to rsync.  Note that **ORDER CAN BE IMPORTANT**, as some options may override some or all of others.
 
+##### `summary_group`
+A string which defines the summary group title used in mirrmaid reports.  The default value is set to the resource's *namevar*.
+
 ##### `summary_history_count`
 Keep this many historical copies of operational summaries on disk before they are rotated out of existence.  A minimum value of one is silently enforced.  The default is that from the package.
 
