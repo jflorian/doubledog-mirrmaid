@@ -10,14 +10,14 @@
 # === Copyright
 #
 # This file is part of the doubledog-mirrmaid Puppet module.
-# Copyright 2018 John Florian
+# Copyright 2018-2020 John Florian
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
 define mirrmaid::mirror::default (
+        Mirrmaid::Value $value,
         Mirrmaid::Key   $mirror,
         Mirrmaid::Key   $key=$title,
-        Mirrmaid::Value $value,
     ) {
 
     concat::fragment { "mirrmaid-mirror-${mirror}-default-${name}":
