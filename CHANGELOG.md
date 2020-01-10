@@ -19,6 +19,16 @@ Template
 
 All notable changes to this project (since v2.0.0) will be documented in this file.  The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [2.2.0] WIP
+### Added
+- Fedora 30, 31 support
+### Changed
+### Deprecated
+### Removed
+- Fedora 28 support
+### Fixed
+### Security
+
 ## [2.1.0] 2019-03-21
 ### Added
 - Fedora 29 support

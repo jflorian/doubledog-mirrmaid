@@ -1,12 +1,18 @@
 {
-    "name": "doubledog-mirrmaid",
-    "version": "2.1.0",
     "author": "John Florian",
-    "summary": "A module to manage the mirrmaid application",
-    "license": "GPL-3.0",
-    "source": "https://www.doubledog.org/git/puppet-mirrmaid.git",
-    "project_page": "https://github.com/jflorian/doubledog-mirrmaid",
+    "dependencies": [
+        {
+            "name": "doubledog/ddolib",
+            "version_requirement": ">= 1.0.0 < 2.0.0"
+        },
+        {
+            "name": "puppetlabs/concat",
+            "version_requirement": ">= 4.0.0 < 6.0.0"
+        }
+    ],
     "issues_url": "https://github.com/jflorian/doubledog-mirrmaid/issues",
+    "license": "GPL-3.0",
+    "name": "doubledog-mirrmaid",
     "operatingsystem_support": [
         {
             "operatingsystem": "CentOS",
@@ -17,19 +23,14 @@
         {
             "operatingsystem": "Fedora",
             "operatingsystemrelease": [
-                "28",
-                "29"
+                "29",
+                "30",
+                "31"
             ]
         }
     ],
-    "dependencies": [
-        {
-            "name": "doubledog/ddolib",
-            "version_requirement": ">= 1.0.0 < 2.0.0"
-        },
-        {
-            "name": "puppetlabs/concat",
-            "version_requirement": ">= 4.0.0 < 6.0.0"
-        }
-    ]
+    "project_page": "https://github.com/jflorian/doubledog-mirrmaid",
+    "source": "https://www.doubledog.org/git/puppet-mirrmaid.git",
+    "summary": "A module to manage the mirrmaid application",
+    "version": "2.1.0"
 }
