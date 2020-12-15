@@ -1,6 +1,6 @@
 <!--
 This file is part of the doubledog-mirrmaid Puppet module.
-Copyright 2018-2019 John Florian
+Copyright 2018-2020 John Florian
 SPDX-License-Identifier: GPL-3.0-or-later
 
 Template
@@ -22,11 +22,11 @@ All notable changes to this project (since v2.0.0) will be documented in this fi
 ## [2.2.0] WIP
 ### Added
 - CentOS 8 support
-- Fedora 30, 31 support
+- Fedora 32-33 support
 ### Changed
 ### Deprecated
 ### Removed
-- Fedora 28 support
+- Fedora 28-31 support
 ### Fixed
 ### Security
 
