@@ -1,11 +1,11 @@
 <!--
-# This file is part of the doubledog-mirrmaid Puppet module.
-# Copyright 2018-2019 John Florian
-# SPDX-License-Identifier: GPL-3.0-or-later
+This file is part of the doubledog-mirrmaid Puppet module.
+Copyright 2018-2020 John Florian
+SPDX-License-Identifier: GPL-3.0-or-later
 
 Template
 
-## [VERSION] DATE/WIP
+## [VERSION] WIP
 ### Added
 ### Changed
 ### Deprecated
@@ -18,6 +18,15 @@ Template
 # Change log
 
 All notable changes to this project (since v2.0.0) will be documented in this file.  The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
+
+## [2.2.0] 2020-12-15
+### Added
+- CentOS 8 support
+- Fedora 32-33 support
+### Changed
+- dependency on `puppetlabs/concat` now allows version 6
+### Removed
+- Fedora 28-31 support
 
 ## [2.1.0] 2019-03-21
 ### Added
