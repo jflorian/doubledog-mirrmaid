@@ -32,5 +32,5 @@
     "project_page": "https://github.com/jflorian/doubledog-mirrmaid",
     "source": "https://www.doubledog.org/git/puppet-mirrmaid.git",
     "summary": "A module to manage the mirrmaid application",
-    "version": "2.1.0"
+    "version": "2.2.0"
 }
