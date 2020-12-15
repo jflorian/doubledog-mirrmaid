@@ -24,6 +24,7 @@ All notable changes to this project (since v2.0.0) will be documented in this fi
 - CentOS 8 support
 - Fedora 32-33 support
 ### Changed
+- dependency on `puppetlabs/concat` now allows version 6
 ### Deprecated
 ### Removed
 - Fedora 28-31 support
